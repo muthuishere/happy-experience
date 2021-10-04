@@ -18,6 +18,7 @@ Example:
 Date,TaskID,PersonID,Rating
 2021-10-01;6156dc9dc1f742f8e11aa14d;6156dca47fe5761a20b92b1d;4
 2021-10-01;6156dc9dc1f742f8e11aa14d;6156dcb90ba5173d292c9afe;2
+2021-10-02;6156dc9dc1f742f8e11aa14d;6156dcb90ba5173d292c9afe;3
 ```
 
 In this short example two persons have worked with the same task on the same day, one of them giving it a rating of 4 (pretty nice) and the other a rating of 2 (bad).
@@ -30,6 +31,13 @@ Each day of experience gives the user a score for a particular task depending on
 - Rating 3 -> Score 1
 - Rating 4 -> Score 2
 - Rating 5 -> Score 3
+
+Scoring is accumulative and adds together for each row in the input about the same person. In the example above:
+- Two persons, 6156dca47fe5761a20b92b1d and 6156dcb90ba5173d292c9afe, both starts with score 0.
+- First row gives person 6156dca47fe5761a20b92b1d a score of 2 points (since they gave rating 4 to the task on that day)
+- Second row gives person 6156dcb90ba5173d292c9afe a score of -1 (since they gave rating 2)
+- Third row adds 1 to the score for person 6156dcb90ba5173d292c9afe, landing them on score 0.
+After all rows person 6156dca47fe5761a20b92b1d has score 2 and person 6156dcb90ba5173d292c9afe has score 0.
 
 # Input
 
@@ -44,7 +52,7 @@ The program should output a sorted list of PersonID, with the person with the hi
 ```
 $ lein run small-example.csv 6156dc9dc1f742f8e11aa14d
 6156dca47fe5761a20b92b1d;2
-6156dcb90ba5173d292c9afe;-1
+6156dcb90ba5173d292c9afe;0
 ```
 
 # Submitting your code
