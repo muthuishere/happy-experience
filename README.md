@@ -33,11 +33,11 @@ Each day of experience gives the user a score for a particular task depending on
 - Rating 5 -> Score 3
 
 Scoring is accumulative and adds together for each row in the input about the same person. In the example above:
-- Two persons, 6156dca47fe5761a20b92b1d and 6156dcb90ba5173d292c9afe, both starts with score 0.
-- First row gives person 6156dca47fe5761a20b92b1d a score of 2 points (since they gave rating 4 to the task on that day)
-- Second row gives person 6156dcb90ba5173d292c9afe a score of -1 (since they gave rating 2)
-- Third row adds 1 to the score for person 6156dcb90ba5173d292c9afe, landing them on score 0.
-After all rows person 6156dca47fe5761a20b92b1d has score 2 and person 6156dcb90ba5173d292c9afe has score 0.
+- Two persons, `6156dca47fe5761a20b92b1d` and `6156dcb90ba5173d292c9afe`, both starts with score 0.
+- First row gives person `6156dca47fe5761a20b92b1d` a score of 2 points (since they gave rating 4 to the task on that day)
+- Second row gives person `6156dcb90ba5173d292c9afe` a score of -1 (since they gave rating 2)
+- Third row adds 1 to the score for person `6156dcb90ba5173d292c9afe`, landing them on score 0.
+After all rows person `6156dca47fe5761a20b92b1d` has score 2 and person `6156dcb90ba5173d292c9afe` has score 0.
 
 # Input
 
