@@ -48,7 +48,7 @@
   )
 
 
-(defn experiences-on [filename task-id-to-be-checked]
+(defn happy-experiences [filename task-id-to-be-checked]
 
   (->>
     (parser/parse-data-in filename)
@@ -59,11 +59,11 @@
     )
   )
 
-(defn print-experiences [filename task-id-to-be-checked]
+(defn formatted-happy-experiences [filename task-id-to-be-checked]
   (->>
-    (experiences-on filename task-id-to-be-checked)
+    (happy-experiences filename task-id-to-be-checked)
     (concat-results-with-newline)
-    (println)
+
 
     )
 
@@ -75,6 +75,11 @@
 
 (defn -main [filename  task-id & args]
 
-  (print-experiences filename task-id)
+  (->>
+    (formatted-happy-experiences filename task-id)
+    (println)
+
+    )
+
 
   )

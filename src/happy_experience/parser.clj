@@ -22,12 +22,31 @@
 
   )
 
+
+(defn has-semi-colon [input]
+  (clojure.string/includes? input ";")
+  )
+(defn has-comma [input]
+  (clojure.string/includes? input ",")
+  )
+
+(defn get-delimeter [input]
+  (if (has-semi-colon input)
+    #";"
+    #","
+    )
+  )
+
+(defn has-delimeter [input]
+  (or (has-semi-colon input) (has-comma input))
+  )
+
 (defn split-row
   [input]
 
 
   (let [
-        [date task-id person-id rating] (str/split input #";")
+        [date task-id person-id rating] (str/split input (get-delimeter input))
         ]
     {
      :date      (LocalDate/parse date)
@@ -54,14 +73,15 @@
   )
 
 
-(defn has-semi-colon [input]
-  (clojure.string/includes? input ";")
-  )
+
+
 (defn has-all-the-fields [input]
-  (= 4 (count  (str/split input #";")))
+  (= 4 (count  (str/split input (get-delimeter input))))
   )
+
+
 (defn is-valid-row [input]
-  (and  (has-semi-colon input) (has-all-the-fields input) )
+  (and  (has-delimeter input) (has-all-the-fields input) )
   )
 
 (defn split-rows
