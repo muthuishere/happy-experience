@@ -56,7 +56,7 @@
 (deftest read-contents!-test
 
   (let [
-        res (parse-data-in "small-example.csv")
+        res (parse-data-in "another-small-example.csv")
         ]
 
     (println (pr-str res))
@@ -80,6 +80,7 @@
 (deftest is-valid-row-test
 
   (is (is-valid-row "2021-10-01;6156dc9dc1f742f8e11aa14d;6156dca47fe5761a20b92b1d;4"))
+  (is (is-valid-row "2021-10-01,6156dc9dc1f742f8e11aa14d,6156dca47fe5761a20b92b1d,4"))
   (is (= false (is-valid-row "2021-10-01")) )
   (is (= false (is-valid-row "")) )
   (is (= false (is-valid-row "2021-10-016156dc9dc1f742f8e11aa14d;6156dca47fe5761a20b92b1d;4")) )
